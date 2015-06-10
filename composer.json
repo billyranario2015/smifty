@@ -1,0 +1,12 @@
+{
+	"require": {
+		"catfan/medoo": "dev-master",
+		"twig/twig": "~1.18",
+		"torophp/torophp": "dev-master",
+		"aura/auth": "2.*@dev",
+		"php": ">=5.2.0",
+		"ext-curl": "*",
+		"authorizenet/authorizenet": "1.8.0",
+		"swiftmailer/swiftmailer": "~5.4"
+	}
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Smifty{% endblock %}</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/animate.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/responsive.css">
+
+        {% block styles %}{% endblock %}
+       
+    </head>
+    <body>
+        <section id="warnings">
+            <div class="alert alert-danger"></div>
+        </section>
+        <section id="header">
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-default">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topmenu">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand brand-text" href="/">Smifty</a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="topmenu">
+                          <ul class="nav navbar-nav">
+                          </ul>
+
+                          <ul class="nav navbar-nav navbar-right">
+                            {% if logged %}
+                                        <li><a href="/user/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                    {% else %}
+                                        <li class="login-url">
+                                            <div class="btn-group">
+                                                <button class="dropdown-toggle" type="button" data-toggle="dropdown"> <i class="fa fa-sign-in"></i> Login<i class="caret"></i></button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="/login/customer">Customer</a></li>
+                                                    <li><a href="/login/restaurant">Restaurant</a></li>
+                                                    <li><a href="/login/admin">Admin</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    {% endif %}
+                                    {% if not logged %}
+                                        <li>
+                                            <a href="page/signup"><i class="fa fa-pencil-square-o"></i> Signup</a>
+                                        </li>
+                                    {% endif %}
+                          </ul>
+                        </div><!-- /.navbar-collapse -->
+                      </div><!-- /.container-fluid -->
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        {% block pagecontent %}
+            <section id="banner">
+                <div class="container">
+                     <div class="row">
+                         <div class="b-container">
+                             <h1 class="banner-heading animated fadeInUp">$5 fast food delivery</h1>
+                             <h3 class="banner-subtitle animated fadeInUp">choose your city</h3>
+                         </div>
+                         <div class="city-box animated fadeInUp">
+                             <div class="city-options">
+                                 <button class="btn btn-transparent">Cities <i class="fa fa-chevron-down"></i></button>
+                                 <ul class="city-choices">
+                                    {% for city in cities %}
+                                        <li><a href="city/{{ city.id }}">{{ city.cityname }}</a></li>
+                                    {% endfor %}
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+                </div>
+            </section>
+        {% endblock %}
+
+        <section id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="text-center">
+                        <ul class="footer-links">
+                            <li><a href="">Home</a></li>
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Jobs</a></li>
+                            <li><a href="">Become a Driver</a></li>
+                            <li><a href="">Restaurant Signup</a></li>
+                            <li><a href="">Terms &amp; Conditions</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="copy">
+            <div class="container">
+                <div class="row">
+                    <p>Copyright Smifty, Inc</p>
+                </div>
+            </div>
+        </section>
+
+        {% block finalsection %}{% endblock %}
+
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/assets/js/modernizr.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+        <script type="text/javascript" src="/assets/js/wow.js"></script>
+        {% block scripts %}{% endblock %}
+        
+        <script>
+            WebFont.load({
+              google: {
+                families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Roboto:300,regular,500"]
+              }
+            });
+
+            var hiddencity = true;
+            $('.city-options button').click(function() {
+                console.log('here');
+                if (hiddencity) {
+                    $('.city-choices').show();
+                    hiddencity = false;
+                } else {
+                    $('.city-choices').hide();
+                    hiddencity = true;
+                }
+            });
+        </script>
+
+    </body>
+</html>
+
+
+
+

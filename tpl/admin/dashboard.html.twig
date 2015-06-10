@@ -1,0 +1,361 @@
+{% extends 'base.html.twig' %}
+
+{% block styles %}
+	<link rel="stylesheet" href="/assets/css/xcharts.min.css">
+{% endblock %}
+
+{% block pagecontent %}
+	<section id="subpage">
+		<div class="container">
+			<div class="row">
+				<div class="b-container">
+                     <h1 class="banner-heading animated fadeInUp">admin panel</h1>
+                 </div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 animated fadeInUp">
+					<div id="admin-panel">
+						<div role="tabpanel">
+						  		<!-- Nav tabs -->
+						 	<ul class="nav nav-tabs" role="tablist">
+							    <li role="presentation" class="active"><a href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">Settings</a></li>
+							    <li role="presentation"><a href="#orders" aria-controls="orders" role="tab" data-toggle="tab">Orders</a></li>
+							    <li role="presentation"><a href="#customers" aria-controls="customers" role="tab" data-toggle="tab">Customer Service</a></li>
+							    <li role="presentation"><a href="#restaurants" aria-controls="restaurants" role="tab" data-toggle="tab">Restaurants</a></li>
+							    <li role="presentation"><a href="#food" aria-controls="food" role="tab" data-toggle="tab">Food</a></li>
+						  	</ul>
+
+						  	<!-- Tab panes -->
+						  	<div class="tab-content">
+						  		<input type="hidden" id="filler" value="">
+
+							    <div role="tabpanel" class="tab-pane active" id="dashboard">
+							    	<div class="col-md-12 panel-box">
+							    		<div class="col-md-8 dashboard-item">
+							    			<div class="dashboard-box text-left">
+							    				<h4>Social Media</h4>
+							    				<div class="dashboard-item">
+							    					<div class="col-md-1 col-xs-1">
+							    						<i class="fa fa-facebook-square fa-2x"></i>
+							    					</div>
+							    					<div class="col-md-8 col-xs-8">
+						    							<input type="text" id="fb_url" class="form-control input-sm" name="fb" value="{{ settings.fb_url.url }}">
+							    					</div>
+							    					<div class="col-md-3 col-xs-3 text-right">
+							    						<div class="btn-group media-url-trigger">
+							    							<button class="btn btn-sm {% if settings.fb_url.active == '1' %}btn-success active{% else %}btn-default{% endif %}" data-value="1" data-type="fb_url">On</button>
+							    							<button class="btn btn-sm {% if settings.fb_url.active == '0' %}btn-success active{% else %}btn-default{% endif %}" data-value="0" data-type="fb_url">Off</button>
+							    						</div>
+							    					</div>
+							    					<div class="clearfix"></div>
+							    				</div>
+							    				<div class="dashboard-item">
+							    					<div class="col-md-1 col-xs-1">
+							    						<i class="fa fa-twitter-square fa-2x"></i>
+							    					</div>
+							    					<div class="col-md-8 col-xs-8">
+						    							<input type="text" id="twit_url" class="form-control input-sm" name="twit" value="{{ settings.twit_url.url }}">
+							    					</div>
+							    					<div class="col-md-3 col-xs-3 text-right">
+							    						<div class="btn-group media-url-trigger">
+							    							<button class="btn btn-sm {% if settings.twit_url.active == '1' %}btn-success active{% else %}btn-default{% endif %}" data-value="1" data-type="twit_url">On</button>
+							    							<button class="btn btn-sm {% if settings.twit_url.active == '0' %}btn-success active{% else %}btn-default{% endif %}" data-value="0" data-type="twit_url">Off</button>
+							    						</div>
+							    					</div>
+							    					<div class="clearfix"></div>
+							    				</div>
+							    				<div class="dashboard-item">
+							    					<div class="col-md-1 col-xs-1">
+							    						<i class="fa fa-pinterest-square fa-2x"></i>
+							    					</div>
+							    					<div class="col-md-8 col-xs-8">
+						    							<input type="text" id="pint_url" class="form-control" name="pint" value="{{ settings.pint_url.url }}">
+							    					</div>
+							    					<div class="col-md-3 col-xs-3 text-right">
+							    						<div class="btn-group media-url-trigger">
+							    							<button class="btn btn-sm {% if settings.pint_url.active == '1' %}btn-success active{% else %}btn-default{% endif %}" data-value="1" data-type="pint_url">On</button>
+							    							<button class="btn btn-sm {% if settings.pint_url.active == '0'%}btn-success active{% else %}btn-default{% endif %}" data-value="0" data-type="pint_url">Off</button>
+							    						</div>
+							    					</div>
+							    					<div class="clearfix"></div>
+							    				</div>
+							    				<div class="dashboard-item">
+							    					<div class="col-md-1 col-xs-1">
+							    						<i class="fa fa-google-plus-square fa-2x"></i>
+							    					</div>
+							    					<div class="col-md-8 col-xs-8">
+						    							<input type="text" id="google_url" class="form-control" name="google" value="{{ settings.google_url.url }}">
+							    					</div>
+							    					<div class="col-md-3 col-xs-3 text-right">
+							    						<div class="btn-group media-url-trigger">
+							    							<button class="btn btn-sm {% if settings.google_url.active == '1' %}btn-success active{% else %}btn-default{% endif %}" data-value="1" data-type="google_url">On</button>
+							    							<button class="btn btn-sm {% if settings.google_url.active == '0' %}btn-success active{% else %}btn-default{% endif %}" data-value="0" data-type="google_url">Off</button>
+							    						</div>
+							    					</div>
+							    					<div class="clearfix"></div>
+							    				</div>
+							    				<div class="clearfix"></div>
+							    			</div>
+							    			<div class="dashboard-box text-left">
+							    				<h4>Currency {{ currency }}</h4>
+							    				<select name="currency" id="currencySelector" class="form-control">
+							    					<option {% if currency == 'dollar' %}selected{% endif %} value="dollar">&dollar;</option>
+							    					<option {% if currency == 'pound' %}selected{% endif %} value="pound">&pound;</option>
+							    					<option {% if currency == 'euro' %}selected{% endif %} value="euro">&euro;</option>
+							    				</select>
+							    			</div>
+							    		</div>
+							    		<div class="col-md-4">
+							    			<div class="alert alert-info" id="dashboard-notice"></div>
+							    		</div>
+								    		
+							    	</div>
+							    </div>
+							    <!-- dashboard ends -->
+							    <!-- orders starts -->
+							    <div role="tabpanel" class="tab-pane" id="orders">
+							    	<div class="col-md-12 order-box panel-box">
+							    		<div class="col-md-6 single">
+							    			<div class="single-item ">
+							    				<h5 class="item-title">Order In Progress</h5>
+
+							    				<table class="table table-bordered table-striped">
+							    					<tr>
+							    						<td>Order</td>
+							    						<td>Data</td>
+							    						<td>Status</td>
+							    						<!-- <td>Action</td> -->
+							    					</tr>
+							    					{% for order in orders %}
+														<tr>
+															<td>{{ order.orderid }}</td>
+															<td>{{ order.dateordered|date('d-m-Y')}}</td>
+															<td>
+							    								{% if order.status == NULL %}
+																	<span class="text-danger">On progress</span>	
+																{% endif %}
+															</td>
+															<!--<td>
+															<div class="btn-group" role="group">
+							    							<button class="btn btn-danger btn-sm btn" id=""><i class="fa fa-close"></i></button>
+							    							<button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></button>
+							    							</div>
+							    						</td> -->
+														</tr>
+							    					{% endfor %}
+							    				</table>
+
+							    				<div class="clearfix"></div>
+							    			</div>
+							    		</div>
+							    		<div class="col-md-6 single">
+							    			<div class="single-item ">
+							    				<h5 class="item-title text-right">Order Placed 
+							    					<span class="pull-right">
+							    						<img src="/assets/images/spinner.gif" id="preload" hidden>
+							    						<i class="glyphicon glyphicon-ok text-success check" style="display:none"></i>
+							    					</span>
+							    				</h5>
+							    				<table class="table table-bordered table-striped">
+							    					<tr>
+							    						<td>Order</td>
+							    						<td>Data</td>
+							    						<td>Status</td>
+							    						<!-- <td>Action</td> -->
+							    					</tr>							    				
+							    					{% for order in placed_orders %}
+							    						<tr>
+							    							<td>{{order.orderid}}</td>
+							    							<td>{{order.dateordered|date('d-m-Y')}}</td>
+							    							<td><select class="form-control order-status-row" id="{{order.orderid}}" style="border:0;box-shadow:none">
+																<option {%if order.status == 'placed order' %} selected {%endif%} value="placed order" class="order-status">Placed Order</option>
+																<option {%if order.status == 'preparing' %} selected {%endif%} value="preparing" class="order-status">Preparing</option>
+																<option {%if order.status == 'quality control' %} selected {%endif%} value="quality control" class="order-status">Quality Control</option>
+																<option {%if order.status == 'delivery' %} selected {%endif%} value="delivery" class="order-status">Delivery</option>
+																<option {%if order.status == 'delivered' %} selected {%endif%} value="delivered" class="order-status">Delivered</option>
+																</select>
+							    							</td>
+							    						</tr>
+							    					{% endfor %}
+							    				</table>
+							    			</div>
+							    		</div>
+							    	</div>
+							    </div>
+							    <div role="tabpanel" class="tab-pane" id="customers">
+							    	<div class="col-md-12 customer-box panel-box">
+							    		<div class="col-md-6 single">
+							    			<div class="single-item bg-danger">
+							    				<h5 class="item-title">Customer Enquiry</h5>
+							    			</div>
+							    		</div>
+							    	</div>
+							    </div>
+							    <div role="tabpanel" class="tab-pane" id="restaurants">
+							    	<div class="col-md-12 restaurant-box panel-box">
+							    		<div class="col-md-6 single">
+							    			<div class="single-item bg-default text-left">
+							    				<label for="restaurantname">Restaurant Search/Add</label>
+							    				<div class="searchfield">
+							    					<input type="text" name="restaurantname" id="restaurantname" class="form-control" data-usertype="admin">
+							    					<button id="add-a-restaurant" class="btn btn-info"><i class="fa fa-plus"></i></button>
+							    				</div>
+							    				<div id="emptyrestaurant" class="alert alert-danger">No match found! Click button to add restaurant</div>
+							    				<select multiple class="form-control" id="restaurantsearchresults" placeholder="Search for Restaurant"></select>
+							    			</div>
+							    		</div>
+							    		<div class="col-md-6 single">
+							    			<div class="single-item bg-default">
+							    				<div class="col-md-12">
+							    					<div id="restaurantalert" class="alert alert-info"></div>
+									    			<div class="restaurantactions">
+									    				<h3 class="title">Options</h3>
+									    				<p class="resta"><b>Restaurant Name : </b> <span class="val"></span></p>
+									    				<p class="address"><b>Address : </b> <span class="val"></span></p>
+									    				<p class="phone"><b>Phone : </b> <span class="val"></span></p>
+									    				<p class="Email"><b>Email : </b> <span class="val"></span></p>
+									    				<p class="logo"><b>Logo : </b> <span class="val"></span></p>
+
+									    				<div class="group-btn" id="restaurantactions">
+									    					<button class="btn btn-danger" data-intent="delete" data-for="restaurant"><i class="fa fa-trash"></i> Delete</button>
+									    					<button class="btn btn-default" data-intent="edit"><i class="fa fa-pencil"></i> Edit</button>
+									    				</div>
+									    			</div>
+							    					<div id="addrestaurant-b">
+							    						<h5 class="item-title">Add A Restaurant</h5>
+							    						<div class="col-md-12">
+							    							<form action="" method="post" id="add-restaurant-form">
+							    								<div class="bg-default">
+								    								<form action="" method="post">
+								    									<div class="input-group margin-bottom-sm">
+								    										<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								    										<input type="text" class="form-control" name="restaurant[name]" placeholder="Restaurant Name" id="newretaurantname">
+								    									</div>
+								    									<div class="form-group text-left">
+																			<label>City</label>
+																			<select name="restaurant[city]" id="citylist" class="form-control"></select>
+																		</div>
+								    									<div class="input-group margin-bottom-sm">
+								    										<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+								    										<textarea name="restaurant[address]" rows="10" class="form-control" placeholder="address" id="restaddress"></textarea>
+								    									</div>
+								    									<div class="input-group margin-bottom-sm">
+								    										<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+								    										<input type="text" class="form-control input-sm" name="restaurant[phone]" placeholder="Phone" id="restphone">
+								    									</div>
+								    									<div class="input-group margin-bottom-sm">
+								    										<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+								    										<input type="email" class="form-control input-sm" name="restaurant[email]" placeholder="email@address.com" id="restemail">
+								    									</div>
+								    									
+								    									<div class="input-group margin-bottom-sm">
+								    										<p class="pull-right">
+								    											<button class="btn btn-success" type="submit">Add</button>
+								    										</p>
+								    										<input type="hidden" name="intent" value="add-restaurant">
+								    									</div>
+								    								</form>
+								    							</div>
+							    							</form>
+							    						</div>
+							    					</div>
+													
+							    				</div>
+							    				<div class="clearfix"></div>
+							    			</div>
+							    		</div>
+							    		<div class="col-md-6 single">
+							    			
+							    		</div>
+							    	</div>
+							    </div>
+							    <div role="tabpanel" class="tab-pane" id="food">
+							    	<div class="col-md-12 food-box panel-box">
+							    		<div class="col-md-6 single">
+							    			<div class="single-item bg-default text-left">
+							    				<label for="jobname">Food Search</label>
+							    				<div class="searchfield">
+							    					<input type="text" name="jobname" id="jobname" class="form-control" data-usertype="admin">
+							    					<button id="add-a-food" class="btn btn-info"><i class="fa fa-plus"></i></button>
+							    				</div>
+							    				<div id="emptyfood" class="alert alert-danger">No match found! Click button to add food</div>
+							    				<select multiple class="form-control" id="foodsearchresults" placeholder="Search for food"></select>
+							    			</div>
+							    		</div>
+							    		<div class="col-md-6 single">
+							    			<div id="foodalert" class="alert alert-info"></div>
+							    			<div class="foodactions">
+							    				<h3 class="title">Options</h3>
+							    				<p class="resta"><b>Restaurant : </b> <span class="val"></span></p>
+							    				<p class="name"><b>Food name : </b> <span class="val"></span></p>
+							    				<p class="amount"><b>Amount : </b> <span class="val"></span></p>
+
+							    				<div class="group-btn" id="foodactions">
+							    					<button class="btn btn-danger" data-intent="delete"><i class="fa fa-trash"></i> Delete</button>
+							    					<button class="btn btn-default" data-intent="edit"><i class="fa fa-pencil"></i> Edit</button>
+							    				</div>
+							    			</div>
+
+											<!-- add new food when search returns empty -->
+							    			<div id="newfoodbox">
+							    				<h3 class="title">Adding New Food</h3>
+												<form action="" method="post" class="text-left" id="add-food-form">
+													<div class="form-group">
+														<label for="newfoodname">Food Name</label>
+														<input type="text" class="form-control input-sm" name="food[name]" id="newfoodname">
+													</div>
+													<div class="form-group">
+														<label>Restaurant</label>
+														<select name="food[restaurant]" id="restaurantlist" class="form-control"></select>
+													</div>
+													<div class="form-group">
+														<label>Amount</label>
+														<input type="text" class="form-control input-sm" name="food[amount]" id="foodamount">
+													</div>
+													<div class="form-group" id="vegetarian">
+														<label>Vegetarian ? </label>
+														<label class="radio-inline">
+															<input type="radio" value="1" name="food[vegetarian]"> Yes
+														</label>
+														<label class="radio-inline">
+															<input type="radio"  value="0" name="food[vegetarian]"> No
+														</label>
+													</div>
+													<div class="form-group" id="available">
+														<label>Available Now ? </label>
+														<label class="radio-inline">
+															<input type="radio" value="1" name="food[available]" > Yes
+														</label>
+														<label class="radio-inline">
+															<input type="radio"  value="0" name="food[available]"> No
+														</label>
+													</div>
+													<div class="form-group">
+														<div class="col-md-12 text-right">
+															 <div class="row">
+															 	<button class="btn btn-primary" type="submit">Add Food</button>
+															 </div>
+														</div>
+													</div>
+												</form>
+							    			</div>
+							    		</div>
+							    	</div>
+							    </div>
+						  	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+		</div>
+	</section>
+	
+{% endblock %}
+
+{% block scripts %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/assets/js/xcharts.min.js"></script>
+	<script type="text/javascript" src="/assets/js/dashboard-actions.js"></script>
+{% endblock %}

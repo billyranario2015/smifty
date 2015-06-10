@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block pagecontent %}
+	<section id="subpage">
+		<div class="container">
+			<div class="row">
+				<div class="b-container">
+                     <h1 class="banner-heading animated fadeInUp">Order Confirmation</h1>
+                     <div class="alert alert-info">
+                     	Please review your order and proceed to payment section if order is correct.
+                     </div>
+                 </div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="order-box">
+						<table class="table table-striped table-bordered">
+							<tr>
+								<th>Restaurant</th>
+								<th>Quantity</th>
+								<th>Name of Food</th>
+								<th>Amount</th>
+							</tr>
+							{% for o in orders %}
+								<tr class="foodrow text-left">
+									<td>{{ o.name }}</td>
+									<td class="quantity">{{ o.quantity }}</td>
+									<td class="foodname">{{ o.foodname }}</td>
+									<td class="amount">{{ o.amount }}</td>
+								</tr>
+							{% endfor %}
+						</table>
+
+						<div class="text-right">
+							<a href="/place-order" class="btn btn-success">Continue</a>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+		</div>
+	</section>
+	
+{% endblock %}

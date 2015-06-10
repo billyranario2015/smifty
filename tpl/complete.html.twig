@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block pagecontent %}
+	<section id="subpage">
+		<div class="container">
+			<div class="row">
+				<div class="b-container">
+                     <h1 class="banner-heading animated fadeInUp">Order Placed</h1>
+                 </div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="content-box">
+						<div class="alert alert-success">Your order has been placed and will be delivered to you as soon as possible.</div>
+
+						<div class="alert alert-danger">
+							<p>Invoice Number: <b>{{ invoicenum }}</b></p>
+							<p>Transaction Response: <b>{{ response }}</b></p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+				
+		</div>
+	</section>
+	
+{% endblock %}

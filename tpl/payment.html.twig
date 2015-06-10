@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block pagecontent %}
+	<section id="subpage">
+		<div class="container">
+			<div class="row">
+				<div class="b-container">
+                     <h1 class="banner-heading animated fadeInUp">Place An Order</h1>
+                 </div>
+			</div>
+
+			{% if error %}
+				<div class="alert alert-danger"><h4>There is an error!</h4><p>{{ response }}</p></div>
+			{% endif %}
+
+			<div class="row">
+				<div class="order-details">
+					<div class="col-md-12">
+						<!-- https://test.authorize.net/gateway/transact.dll -->
+						<form action="" method="post">
+							<div class="col-md-4">
+								<div class="food-list-box  whitebox">
+									<h4>Order Details</h4>
+
+									<ul class="orders-list">
+										{% for o in orders %}
+											<li class="foodname">{{ o.foodname|raw }} <span class="amount pull-right">&{{ currency|raw }}; {{ o.amount }}</span></li>
+										{% endfor %}
+										<li>&nbsp;</li>
+										<li class="total"><b>TOTAL :</b> <span class="amount pull-right"><b>&{{ currency|raw }}; {{ total }}</b></span></li>
+									</ul>
+								</div>
+							</div>
+
+							{% for c in client %}
+								<div class="col-md-4">
+									<div class="billing-details text-left whitebox">
+										<h4>Billing Details</h4>
+										
+										<div class="form-group">
+											<label for="card">Card Type</label>
+											<div class="col-md-12">
+												<div class="row">
+													<div class="btn-group card" role="group">
+														<button type="button" class="btn btn-default"><img src="/assets/images/visa.png" alt=""></button>
+														<button type="button" class="btn btn-default"><img src="/assets/images/mastercard.png" alt=""></button>
+														<button type="button" class="btn btn-default"><img src="/assets/images/maestro.png" alt=""></button>
+														<button type="button" class="btn btn-default"><img src="/assets/images/americanexpress.png" alt=""></button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="card">Card Number</label>
+											<input type="text" name="order[cardnumber]" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="card">Name on card</label>
+											<input type="text" name="order[nameoncard]" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="card">Expiry Date</label>
+											<input type="text" name="order[expiry]" class="form-control" placeholder="dd/yy">
+										</div>
+										<div class="form-group">
+											<label for="card">CVV</label>
+											<input type="text" name="order[cvv]" class="form-control">
+										</div>
+
+									</div>
+									
+								</div>
+								<div class="col-md-4">
+									<div class="delivery-address-box whitebox">
+										<h4>Delivery Address</h4>
+										<ul class="delivery-address">
+
+											{% for cl in client %}
+												<li>Name : {{c.firstname}} {{c.lastname}}</li>
+												<li>Phone: {{ c.phone }}</li>
+												<li> Address :
+													<address>
+														{{c.address}}
+														{{c.city}}
+														{{c.state}}
+														{{c.country}}
+														{{c.zip}}
+													</address>
+												</li>
+												
+												<input type="hidden" name="order[firstname]" value="{{c.firstname}}">
+												<input type="hidden" name="order[lastname]" value="{{c.lastname}}">
+												<input type="hidden" id="c_address" value="{{c.address}}">
+												<input type="hidden" id="c_city" value="{{c.city}}">
+												<input type="hidden" id="c_state" value="{{c.state}}">
+												<input type="hidden" id="c_country" value="{{c.country}}">
+												<input type="hidden" id="c_zip" value="{{c.zip}}">
+											{% endfor %}
+										</ul>
+									</div>
+
+									<div class="checkbox whitebox">
+										<label>
+										  	<input type="checkbox" id="samebilling"> Billing Address same as above
+										</label>
+									</div>
+									<div class="whitebox text-left" id="billingaddress">
+										<div class="form-group">
+											<label for="b_address">Address</label>
+											<input type="text" name="order[b_address]" id="b_address" value="" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="b_city">City</label>
+											<input type="text" name="order[b_address]" id="b_city" value="" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="b_state">State</label>
+											<input type="text" name="order[b_state]" id="b_state" value="" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="b_zip">Zip Code</label>
+											<input type="text" name="order[b_zip]" id="b_zip" value="" class="form-control">
+										</div>
+									</div>
+
+									<div class="whitebox">
+										<div class="form-group text-right">
+											<button type="submit" class="btn btn-success">Place Order</button>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+
+							<input type="hidden" name="order[amount]" value="{{ total }}">
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+{% endblock %}
+
+
+{% block scripts %}
+	<script type="text/javascript">
+		$('#samebilling').change(function(e) {
+			if ($(this).is(':checked')) {
+				$('#b_address').val($('#c_address').val());
+				$('#b_city').val($('#c_city').val());
+				$('#b_state').val($('#c_state').val());
+				$('#b_zip').val($('#c_zip').val());
+			} else {
+				console.log('not checked');
+			}
+		});
+	</script>
+
+{% endblock %}

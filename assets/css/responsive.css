@@ -1,0 +1,37 @@
+@media only screen and (max-width: 768px) {
+  html body section .container {
+    width: 100%;
+  }
+  html body section .container .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  html body section .container .row .b-container h1 {
+    font-size: 46px !important;
+  }
+  html body section#header .container .row .navbar-header .navbar-toggle {
+    background-color: #ddd;
+  }
+  html body section#header .container .row .navbar-header .navbar-toggle .icon-bar {
+    border-top: 1px solid #FFF;
+    box-shadow: 0px 1px #D2D2D2;
+  }
+  html body section#header .container .row .brand-text {
+    margin-top: 0;
+  }
+  html body section#footer .container .row .about-box {
+    padding: 0 40px;
+  }
+  html body section#footer .container .row .pages-box {
+    padding: 18px 40px;
+    background-color: #DBDBDB;
+    border-top: 1px solid #9D9D9D;
+    border-bottom: 1px solid #9D9D9D;
+  }
+  html body section#footer .container .row .social-box {
+    padding: 0 40px;
+  }
+  html body section#subpage .container .row .restaurant-logos {
+    padding: 0 20px;
+  }
+}

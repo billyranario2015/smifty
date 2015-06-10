@@ -1,0 +1,473 @@
+html body .opensans {
+  font-family: 'Open Sans', sans-serif;
+}
+html body section .container {
+  width: 940px;
+  padding: 0 0px;
+}
+html body section .lighterbox {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+html body section ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+html body section p {
+  font-size: .8em;
+}
+html body section .thumbnail {
+  margin-bottom: 0;
+}
+html body section button:focus {
+  outline: none !important;
+}
+html body section#warnings {
+  display: none;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+html body section#header {
+  background-color: white;
+}
+html body section#header .container .row .navbar-default {
+  border-color: transparent;
+  background-color: transparent;
+  margin-bottom: 0;
+}
+html body section#header .container .row .navbar-default .navbar-brand {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #69b9ff;
+  font-size: 25px;
+  line-height: 25px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+}
+html body section#header .container .row .navbar-default .dropdown-toggle {
+  margin-left: 13px;
+}
+html body section#header .container .row .brand-text a {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #69b9ff;
+  font-size: 25px;
+  line-height: 25px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  text-decoration: none;
+}
+html body section#header .container .row #topmenu ul li a {
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none;
+  color: #222222;
+  padding: 19px 0;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Open Sans', sans-serif;
+}
+html body section#header .container .row #topmenu ul li.login-url .btn-group .dropdown-toggle {
+  background-color: #fff;
+  border: none;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-size: 16px;
+  margin-right: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+html body section#header .container .row #topmenu ul li.login-url .btn-group .dropdown-menu li a {
+  padding: 10px 10px;
+  display: block;
+}
+html body section#banner {
+  padding-top: 176px;
+  padding-bottom: 166px;
+  border-bottom: 4px solid #69b9ff;
+  background-image: url('../images/city-scape.jpg');
+  text-align: center;
+  background-size: cover;
+}
+html body section#banner .container .row .b-container {
+  font-family: 'Open Sans', sans-serif;
+}
+html body section#banner .container .row .b-container .banner-heading {
+  margin-bottom: 30px;
+  color: white;
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+html body section#banner .container .row .b-container .banner-subtitle {
+  margin-bottom: 40px;
+  color: #2e9dff;
+  font-size: 25px;
+  line-height: 25px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+html body section#banner .container .row .city-box {
+  position: relative;
+  width: 185px;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+}
+html body section#banner .container .row .city-box .city-options .btn-transparent {
+  display: block;
+  border: 1px solid white;
+  color: white;
+  -webkit-user-select: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 18px;
+  border: 1px solid #fff;
+  border-radius: 0;
+  padding: 20px 70px;
+  margin: 0 auto;
+  outline: 0;
+  width: 185px;
+}
+html body section#banner .container .row .city-box .city-options .btn-transparent:hover {
+  background-color: rgba(255, 255, 255, 0.56);
+  color: #FFF;
+}
+html body section#banner .container .row .city-box .city-options .city-choices {
+  position: absolute;
+  width: 185px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #fff;
+  display: none;
+}
+html body section#banner .container .row .city-box .city-options .city-choices li {
+  text-align: left;
+}
+html body section#banner .container .row .city-box .city-options .city-choices li a {
+  color: #000;
+  font-size: 18px;
+  padding: 10px 0 10px 20px;
+  display: block;
+}
+html body section#banner .container .row .city-box .city-options .city-choices li a:hover {
+  text-decoration: none;
+  background-color: #ddd;
+}
+html body section#subpage {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 4px solid #69b9ff;
+  text-align: center;
+  background-color: #EDEFF2;
+}
+html body section#subpage .container .row .b-container .banner-heading {
+  margin-bottom: 30px;
+  color: #000;
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+html body section#subpage .container .row .b-container .banner-subtitle {
+  margin-bottom: 40px;
+  color: #2e9dff;
+  font-size: 25px;
+  line-height: 25px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+html body section#subpage .container .row #order-wrapper .row .food-list-box ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid #F5F5F5;
+}
+html body section#subpage .container .row #order-wrapper .row .food-list-box ul li .amount {
+  margin-top: -5px;
+}
+html body section#subpage .container .row #order-wrapper .row .food-list-box ul li .amount li {
+  padding: 0;
+  font-weight: 600;
+  border-bottom: none;
+}
+html body section#subpage .container .row #order-wrapper .row .food-list-box ul li .amount li .add-to-cart:focus {
+  outline: 0;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .pickup-option {
+  margin-bottom: 15px;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner .basket-title {
+  margin: 0 auto 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner .alert {
+  display: none;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #current-basket li {
+  font-size: .9em;
+  font-weight: bold;
+  margin-bottom: 12px;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #current-basket li .amount {
+  float: right;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #current-basket li .removefood {
+  border-radius: 20px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  margin-right: 10px;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #current-basket li .removefood:focus {
+  outline: 0;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #subtotal {
+  border-top: 1px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  padding: 10px 0;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #subtotal .subtotal {
+  margin-bottom: 10px;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #subtotal .amount {
+  float: right;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #subtotal .overall-total {
+  font-size: 2em;
+  font-weight: bold;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #subtotal .overall-total .amount {
+  float: right;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim .basket-inner form #gocheckout {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 100;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim.collapsed .basket-inner .alert {
+  display: none;
+}
+html body section#subpage .container .row #order-wrapper .row .basket-column .basket-slim.collapsed #subtotal {
+  display: none !important;
+}
+html body section#subpage .container .row .restaurant-logos .thumbnail {
+  margin-bottom: 15px;
+}
+html body section#subpage .container .row .order-box table tr td.quantity {
+  width: 2%;
+}
+html body section#subpage .container .row .order-box table tr td.foodname {
+  width: 60%;
+}
+html body section#subpage .container .row .order-box table tr td.amount {
+  width: 10%;
+}
+html body section#subpage .container .row .order-box table tr td img {
+  height: 100px;
+}
+html body section#subpage .container .row .order-details form .whitebox {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+}
+html body section#subpage .container .row .order-details form .billing-details .form-group .card button {
+  padding: 4px;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane h5 {
+  margin: 0;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .panel-box {
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .dashboard-item {
+  margin-bottom: 4px;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .dashboard-item .dashboard-box {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane #dashboard-notice {
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .single {
+  padding: 12px;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .single .single-item {
+  padding: 20px 8px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .single .single-item .item-title {
+  margin-left: 20px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  font-size: 1.4em;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .restaurant-box .single .single-item .searchfield {
+  position: relative;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .restaurant-box .single .single-item .searchfield button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .restaurant-box .single .single-item .searchfield #add-a-restaurant {
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .restaurant-box .single .single-item #restaurantsearchresults {
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .restaurant-box .single .single-item #emptyrestaurant {
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .restaurant-box .single .single-item #addrestaurant-box {
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .restaurant-box .single .single-item #restaurantalert {
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .restaurant-box .single .single-item .restaurantactions {
+  display: none;
+  text-align: left;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .restaurant-box .single .single-item #addrestaurant-b {
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .food-box .single .single-item #foodsearchresults {
+  display: none;
+  border-radius: 4px !important;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .food-box .single .single-item .searchfield {
+  position: relative;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .food-box .single .single-item .searchfield #add-a-food {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 4px 4px 0;
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .food-box .single .single-item #emptyfood {
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .food-box .single .foodactions {
+  display: none;
+  text-align: left;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .food-box .single #newfoodbox {
+  display: none;
+}
+html body section#subpage .container .row #admin-panel .tab-content .tab-pane .food-box #foodalert {
+  display: none;
+}
+html body section#footer {
+  padding-top: 35px;
+  padding-bottom: 35px;
+  color: #6a859c;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #EDEFF2;
+}
+html body section#footer .container .row h5 {
+  margin-bottom: 20px;
+  color: #676770;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+html body section#footer .container .row p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 300;
+}
+html body section#footer .container .row .footer-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+html body section#footer .container .row .footer-link-list li a {
+  display: block;
+  margin-bottom: 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d5d5e0;
+  color: #668cad;
+  font-size: 16px;
+  font-weight: 300;
+  text-decoration: none;
+}
+html body section#footer .container .row .footer-link-list li i {
+  color: #000;
+  float: left;
+  width: 40px;
+}
+html body section#footer .container .row .footer-links {
+  list-style: none;
+  text-align: center;
+}
+html body section#footer .container .row .footer-links li {
+  display: inline-block;
+}
+html body section#footer .container .row .footer-links li a {
+  font-family: 'Open Sans', sans-serif;
+  color: #676770;
+  font-weight: 300;
+  font-size: .8em;
+  text-decoration: none;
+  border-right: 1px solid #676770;
+  padding: 0 10px;
+}
+html body section#footer .container .row .footer-links li:last-child a {
+  border-right: none;
+}
+html body section#copy {
+  background-color: #383838;
+  padding: 38px 0;
+  text-align: center;
+  color: #9A9E9E;
+  font-family: 'Open Sans', sans-serif;
+}
+html body section#copy p {
+  font-size: 16px;
+}

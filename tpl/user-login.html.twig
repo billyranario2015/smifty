@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block pagecontent %}
+	<section id="subpage">
+		<div class="container">
+			<div class="row">
+				<div class="b-container">
+                     <h1 class="banner-heading animated fadeInUp">{{ usertype|upper }} Login</h1>
+                 </div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4 animated fadeInUp">
+					<div class="login-box">
+						{% if error %}
+							<div class="alert alert-danger">There is a problem logging you in.  Please check you entered correct username / password.</div>
+						{% endif %}
+						<form action="" method="post">
+							<div class="form-group">
+								<label for="username">Username</label>
+								<input type="text" name="login[username]" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" name="login[password]" class="form-control">
+							</div>
+							<div class="form-group">
+								<div class="text-right">
+									<button class="btn btn-success" type="submit">Login</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+				
+		</div>
+	</section>
+	
+{% endblock %}

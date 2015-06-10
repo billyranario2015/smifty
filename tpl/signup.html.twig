@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block pagecontent %}
+	<section id="subpage">
+		<div class="container">
+			<div class="row">
+				<div class="b-container">
+                     <h1 class="banner-heading animated fadeInUp">Customer Signup</h1>
+                 </div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					{% if error %}
+					<div class="alert alert-danger">
+						There is an error with the registration.  Please check the fields again.
+					</div>
+					{% endif %}
+					
+					<form action="" method="post" class="text-left">
+						<div class="col-md-6 animated fadeInUp">
+							<div class="form-group">
+								<label for="username">Username</label>
+								<input type="text" name="signup[username]" class="form-control" value="">
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" name="signup[password]" class="form-control" value="">
+							</div>
+							<div class="form-group {% if data.error_password %}has-error has-feedback{%endif %}">
+								<label for="password2">Confirm Password</label>
+								<input type="password" name="signup[password2]" class="form-control" value="">
+							</div>
+							<div class="form-group">
+								<label for="firstname">Firstname</label>
+								<input type="text" name="signup[firstname]" class="form-control" value="">
+							</div>
+							<div class="form-group">
+								<label for="lastname">Lastname</label>
+								<input type="text" name="signup[lastname]" class="form-control" val>
+							</div>
+							<div class="form-group">
+								<label for="phone">Phone</label>
+								<input type="text" name="signup[phone]" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" name="signup[email]" class="form-control">
+							</div>
+						</div>
+						<div class="col-md-6 animated fadeInUp">
+							<div class="form-group">
+								<label for="address">Address</label>
+								<textarea name="signup[address]" class="form-control" rows="4"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="city">City</label>
+								<input type="text" name="signup[city]" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="state">State</label>
+								<input type="text" name="signup[state]" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="country">Country</label>
+								<input type="text" name="signup[country]" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="zip">Zip Code</label>
+								<input type="text" name="signup[zip]" class="form-control">
+							</div>
+							<input type="hidden" name="intent" value="signup">
+							<div class="form-group">
+								<div class="text-right">
+									<button class="btn btn-success" type="submit">Signup</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+				
+		</div>
+	</section>
+	
+{% endblock %}
