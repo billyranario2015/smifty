@@ -107,12 +107,34 @@
 			$result = $db->update($table, [ $valuefield => $value], [$fieldname => $rowname]);
 			
 			break;
+		
 		case 'update-status-order':
 			$table 		= $_POST['table'];
 			$status 	= $_POST['status'];
 			$orderID	= $_POST['orderID'];
 
 			$result = $db->update( $table, [ "status" => $status ] , ["orderid" => $orderID ] );
+			break;
+		
+		case 'view-customer-order-info':
+			$orderID = $_POST['orderID'];
+			$orderInfo = $db->select('orders', [
+					"[>]clients" => ["clientid" => "id"]
+				    ],
+				    [
+					    "orders.orderid", 
+					    "orders.foodname",
+					    "orders.amount" , 
+					    "clients.firstname", 
+					    "clients.lastname", 
+					    "clients.email"
+				     ], 
+				    [ "orders.orderid" => $orderID ]
+				 );
+			$amountOrder =  $db->sum("orders", "amount", [ "orders.orderid" => $orderID ]);
+			$result = array( $orderInfo, $amountOrder );
+			break;
+		
 		default:
 			# code...
 			break;

@@ -406,13 +406,45 @@ $(function() {
 				setTimeout(function() {
 					$("#preload").hide();
 					$(".check").show();
-				}, 3000);
+				}, 1500);
 				$(".check").hide();
 			},
 			error: function(data) {
 				
 			}
 		});		
+	});
+
+	// View Customer Order Status
+	$( "body" ).delegate( '.view-info' , 'click' , function() {
+		var customerOrderInfo = {
+			'intent'	: 'view-customer-order-info',
+			'orderID'	: $(this).text()
+	 	}
+
+		$.ajax({
+			type: 'post',
+			dataType: 'json',
+			url: '/ajax/dashboard-actions.php',
+			data: customerOrderInfo,
+			success: function(data) {
+				$( "ul#food-name li" ).empty();
+				var counter = 1;
+				for( var x in data[0] ) {
+					var fullname = data[0][x].firstname + ' ' +data[0][x].lastname;
+					var foodInfo = "<li>"+ counter++ +") <span class='text-info'>"+ data[0][x].foodname +"</span> - $ "+ data[0][x].amount +"</li>";
+					$( "#customer-name" ).text(fullname);
+					$( "#customer-email" ).text(data[0][x].email);
+					$( "ul#food-name" ).append( foodInfo );
+					$( "#total-amount" ).text(data[1]);
+					$( "#order-id" ).text( data[0][x].orderid );
+					console.log(data[x]);
+				}
+			},
+			error: function(data) {
+				console.log('ERROR: '+data);
+			}
+		});		 	
 	});
 
 

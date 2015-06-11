@@ -471,3 +471,22 @@ html body section#copy {
 html body section#copy p {
   font-size: 16px;
 }
+/* Customer Order Info */
+html body div#modal-view-order div.modal-dialog div.modal-content,
+html body div#modal-view-order div.modal-dialog div.modal-content div.modal-body,
+html body div#modal-view-order div.modal-dialog div.modal-content div.modal-footer
+{
+  float: left;
+  width: 100%;
+}
+html body div#modal-view-order div.modal-dialog div.modal-content div.modal-body div.order-list {
+  margin-top: 10px;
+}
+html body div#modal-view-order div.modal-dialog div.modal-content div.modal-body div.order-list hr {
+  margin: 7px 0;
+}
+/* Custom CSS */
+.remove-side-padding {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
