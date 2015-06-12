@@ -485,6 +485,72 @@ html body div#modal-view-order div.modal-dialog div.modal-content div.modal-body
 html body div#modal-view-order div.modal-dialog div.modal-content div.modal-body div.order-list hr {
   margin: 7px 0;
 }
+
+/* Restaurant Info */
+div#manage-restaurant div.restaurant-info {
+  float: left;
+  width: 100%;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper {
+  padding: 12px;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content {
+  padding: 20px 8px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content h4.title span.info-action a {
+  margin-left: 5px;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content h4.title span.info-action a#save,
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content h4.title span.info-action a#close
+{
+  display: none;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content h4.title {
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  font-size: 1.4em;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content div.details {
+  margin: 17px 0px;
+  float: left;
+  width: 100%;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content div.details div.text-details-wrapper div.text-details {
+  float: left;
+  width: 100%;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content div.details div.text-details-wrapper div.text-details label,
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content div.details div.text-details-wrapper div.text-details > p
+{
+  display: inline-block;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content div.details div.text-details-wrapper div.text-details label {
+  width: 100px;
+  float: left;
+  /*padding-top: 7px;*/
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content div.details div.text-details-wrapper div.text-details > p {
+  float: left;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content div.details div.text-details-wrapper div.text-details address {
+  float: left;
+}
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content div.details div.text-details-wrapper div.text-details div.update-input {
+  display: inline-block;
+  width: 70%;
+  margin-top: 0px;
+} 
+div#manage-restaurant div.restaurant-info div.info-content-wrapper div.info-content div.details div.text-details-wrapper div.text-details div.update-input input[type=text] {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  box-shadow: none;
+  display: none;
+} 
+
 /* Custom CSS */
 .remove-side-padding {
   padding-right: 0 !important;

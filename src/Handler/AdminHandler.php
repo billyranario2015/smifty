@@ -40,6 +40,9 @@
 		public function get($request = false)
 		{
 			$twig = $this->setEnvironment();
+			$getRestaurantInfo = null;
+			$restaurantID = null;
+			$count_orders = null;
 
 			switch ($request) {
 				case 'dashboard':
@@ -63,9 +66,17 @@
 					break;
 
 				case 'restaurant':
-					$getorders = $this->db->select("orders", "*", ["restaurant_id" => $_SESSION['userid']], ["GROUP" => "orderid", "LIMIT" => 5], ["ORDER" => "dateordered ASC"]);
+					$user_id = $_SESSION['userid'];
 					$getSettings = $this->db->select("settings", "*");
+					$getRestaurantInfo = $this->db->select( "restaurant", "*", ["user_id" => $user_id ]);
 
+					// Add session for restaurant id
+					$_SESSION['restaurant_id'] = $getRestaurantInfo[0]['id'];
+					$restaurantID = $_SESSION['restaurant_id'];
+					
+					$getorders = $this->db->select("orders", "*",  ["GROUP" => "orderid", "LIMIT" => 5 , "status" => NULL], ["ORDER" => "dateordered ASC" , "restaurant_id" => $_SESSION['restaurant_id'] ]);
+					$getPlacedOrders = $this->db->select( "orders", "*" , ["GROUP" => "orderid" , "status[!]" => NULL ] );
+					
 					$currency = $this->db->get("settings", "value", ["fieldname" => "currency"]);
 
 					$appSetting = array();
@@ -74,7 +85,7 @@
 						$appSetting[$value['fieldname']]['url'] = $value['value'];
 						$appSetting[$value['fieldname']]['active'] = $value['active'];
 					}
-
+					// var_dump($_SESSION);
 					$view = 'restaurant';
 					break;
 				
@@ -87,13 +98,16 @@
 			try {
 				echo $twig->render('/admin/'.$view.'.html.twig', 
 					array(
-						'logged' 		=> '1',
-						'orders' 		=> $getorders,
-						'placed_orders' => $getPlacedOrders,
-						"activepanel" 	=> 'dashboard',
-						"userid" 		=> $_SESSION['userid'],
-						"settings" 		=> $appSetting,
-						"currency" 		=> $currency
+						'logged' 			=> '1',
+						'orders' 			=> $getorders,
+						'placed_orders' 	=> $getPlacedOrders,
+						"activepanel" 		=> 'dashboard',
+						"userid" 			=> $_SESSION['userid'],
+						"restaurantid"		=> $restaurantID,
+						"settings" 			=> $appSetting,
+						"currency" 			=> $currency,
+						"restaurant_info"	=> $getRestaurantInfo,
+						"countOnProgressOrders" => $count_orders
 					)
 				);
 

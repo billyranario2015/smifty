@@ -406,8 +406,11 @@ $(function() {
 				setTimeout(function() {
 					$("#preload").hide();
 					$(".check").show();
+					setTimeout(function() {	
+						$(".check").hide();
+					}, 3000);
 				}, 1500);
-				$(".check").hide();
+				
 			},
 			error: function(data) {
 				
@@ -446,7 +449,6 @@ $(function() {
 			}
 		});		 	
 	});
-
 
 
 

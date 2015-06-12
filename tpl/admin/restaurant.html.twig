@@ -23,6 +23,7 @@
 							    <li role="presentation"><a href="#orders" aria-controls="orders" role="tab" data-toggle="tab">Orders</a></li>
 							    <li role="presentation"><a href="#customers" aria-controls="customers" role="tab" data-toggle="tab">Customer Service</a></li>
 							    <li role="presentation"><a href="#food" aria-controls="food" role="tab" data-toggle="tab">Food</a></li>
+							    <li role="presentation"><a href="#manage-restaurant" aria-controls="food" role="tab" data-toggle="tab">Manage Restaurant</a></li>
 						  	</ul>
 
 						  	<!-- Tab panes -->
@@ -43,34 +44,65 @@
 							    	<div class="col-md-12 order-box panel-box">
 							    		<div class="col-md-6 single">
 							    			<div class="single-item ">
-							    				<h5 class="item-title">Latest</h5>
+							    				<h5 class="item-title">(<span class="ordersCount text-info"></span>)  Latest </h5>
 
 							    				<table class="table table-bordered table-striped">
 							    					<tr>
 							    						<td>Order</td>
-							    						<td>Data</td>
+							    						<td>Date</td>
 							    						<td>Status</td>
-							    						<td>Action</td>
 							    					</tr>
+							    					{%  set countOrders = 0 %}
 							    					{% for order in orders %}
-														<tr>
-															<td>{{ order.orderid }}</td>
+							    						{% set countOrders = countOrders + 1 %}
+														<tr class="aw">
+															<td><a href="#" data-toggle="modal" class="view-info" data-target="#modal-view-order">{{order.orderid}}</a></td>
 															<td>{{ order.dateordered|date('d-m-Y')}}</td>
-															<td>{{ order.status }}</td>
-															<td><div class="btn-group" role="group">
-							    							<button class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button>
-							    							<button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></button>
-							    						</div></td>
+															<td>
+							    								{% if order.status == NULL %}
+																	<span class="text-danger">On Progress</span>	
+																{% endif %}
+															</td>
 														</tr>
 							    					{% endfor %}
+							    						<input type="hidden" id="countOrders" value="{{countOrders}}">
 							    				</table>
-
 							    				<div class="clearfix"></div>
 							    			</div>
 							    		</div>
 							    		<div class="col-md-6 single">
 							    			<div class="single-item ">
-							    				<h5 class="item-title"></h5>
+							    				<h5 class="item-title">(<span class="countPlacedOrders text-info"></span>) 
+							    				Order Placed
+							    					<span class="pull-right">
+							    						<img src="/assets/images/spinner.gif" id="preload" hidden>
+							    						<i class="glyphicon glyphicon-ok text-success check" style="display:none"></i>
+							    					</span>
+							    				</h5>
+							    				<table class="table table-bordered table-striped">
+							    					<tr>
+							    						<td>Order</td>
+							    						<td>Date</td>
+							    						<td>Status</td>
+							    					</tr>
+							    					{%  set countPlacedOrders = 0 %}
+							    					{% for order in placed_orders %}
+							    						{% set countPlacedOrders = countPlacedOrders + 1 %}
+														<tr>
+															<td><a href="#" data-toggle="modal" class="view-info" data-target="#modal-view-order">{{order.orderid}}</a></td>
+															<td>{{ order.dateordered|date('d-m-Y')}}</td>
+							    							<td><select class="form-control order-status-row" id="{{order.orderid}}" style="border:0;box-shadow:none">
+																<option {%if order.status == 'placed order' %} selected {%endif%} value="placed order" class="order-status">Placed Order</option>
+																<option {%if order.status == 'preparing' %} selected {%endif%} value="preparing" class="order-status">Preparing</option>
+																<option {%if order.status == 'quality control' %} selected {%endif%} value="quality control" class="order-status">Quality Control</option>
+																<option {%if order.status == 'delivery' %} selected {%endif%} value="delivery" class="order-status">Delivery</option>
+																<option {%if order.status == 'delivered' %} selected {%endif%} value="delivered" class="order-status">Delivered</option>
+																</select>
+							    							</td>
+														</tr>
+							    					{% endfor %}
+							    						<input type="hidden" id="countPlacedOrders" value="{{countPlacedOrders}}">
+							    				</table>							    				
 							    			</div>
 							    		</div>
 							    	</div>
@@ -139,12 +171,83 @@
 															 </div>
 														</div>
 													</div>
-													<input type="hidden" name="food['restaurant']" id="restaurantlist" value="{{ userid }}">
+													<input type="hidden" name="food['restaurant']" id="restaurantlist" value="{{ restaurantid }}">
 												</form>
 							    			</div>
 							    		</div>
 							    	</div>
 							    </div>
+							    <!-- Restaurant Info -->
+							    <div role="tabpanel" class="tab-pane" id="manage-restaurant">
+							    	<div class="col-md-12 restaurant-info panel-box">
+							    		<div class="info-content-wrapper">
+							    		{% for info in restaurant_info %}
+							    			<input type="hidden" id="restaurantID" value="{{info.id}}">
+							    			<div class="text-left info-content">
+							    				<h4 class="title">Restaurant Details 
+							    					<span class="info-action pull-right">
+
+							    						<img src="/assets/images/spinner.gif" id="preload" hidden>
+							    						<i class="glyphicon glyphicon-ok text-success check" style="display:none"></i>
+
+							    						<a href="javascript:void(0)" class="action" id="edit"><i class="fa fa-pencil-square-o"></i></a>
+							    						<a href="javascript:void(0)" class="action" id="save"><i class="fa fa-floppy-o"></i></a>
+							    						<a href="javascript:void(0)" class="action" id="close"><i class="fa fa-close"></i></a>
+							    					</span>
+							    				</h4>
+							    				<div class="details">
+							    					<div class="restaurant-profile col-md-3 remove-side-padding">
+														<div class="fileinput fileinput-new" data-provides="fileinput">
+															<div class="fileinput-new thumbnail" >
+																<img src="/assets/images/restaurants/{{info.logo}}">
+															</div>
+														<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+															<div>
+																<span class="btn btn-default btn-file"><span class="fileinput-new"><i class="fa fa-camera"></i></span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+																<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+															</div>
+														</div>		
+							    					</div>
+							    					<div class="col-md-9 text-details-wrapper remove-side-padding">
+							    						<div class="text-details">
+							    							<label>Restaurant: </label>
+							    							<p id="name" class="hide-info">{{info.name}}</p>
+							    							<div class="update-input">
+							    								<input type="text" id="restaurantName" class="form-control" value="{{info.name}}">
+							    							</div>
+							    						</div>
+							    						<div class="text-details">
+							    							<label>Email: </label>
+							    							<p id="email" class="hide-info">{{info.email}}</p>
+							    							<div class="update-input">
+							    								<input type="text" id="restaurantEmail" class="form-control" value="{{info.email}}">
+							    							</div>
+							    						</div>
+							    						<div class="text-details">
+							    							<label>Phone: </label>
+							    							<p id="phone" class="hide-info">{{info.phone}}</p>
+							    							<div class="update-input">
+							    								<input type="text" id="restaurantPhone" class="form-control" value="{{info.phone}}">
+							    							</div>
+							    						</div>
+							    						<div class="text-details">
+							    							<label>Address: </label>
+							    							<address class="hide-info">
+																<p id="address">{{info.address}}</p>	
+							    							</address>
+							    							<div class="update-input">
+							    								<input type="text" id="restaurantAddress" class="form-control" value="{{info.address}}">
+							    							</div>
+							    						</div>
+							    					</div>
+							    				</div>		
+							    			</div>
+							    		{% endfor %}
+							    		</div>
+								    		
+							    	</div>
+							    </div>
+							    <!-- Restaurant Info -->
 						  	</div>
 						</div>
 					</div>
@@ -153,11 +256,46 @@
 				
 		</div>
 	</section>
-	
+
+	<!-- Modal -->
+	<div class="modal fade" id="modal-view-order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Customer Order Info: <span class="text-primary" id="order-id"></span></h4>
+				</div>
+				<div class="modal-body">
+					<div class="col-md-12">
+						<div class="col-md-2 remove-side-padding">
+							<img src="/assets/images/userpic.png" class="img-thumbnail">
+						</div>
+						<div class="col-md-10">
+							<div class="customer-info">
+								<h4 id="customer-name"></h4>
+								<p id="customer-email"></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 order-list">
+						<hr>
+						<label>Order lists: </label>
+						<ul class="list-unstyled" id="food-name">
+						</ul>
+						<p>Total Amount: $<span id="total-amount"></span></p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
 
 {% block scripts %}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
 	<script type="text/javascript" src="/assets/js/xcharts.min.js"></script>
 	<script type="text/javascript" src="/assets/js/restaurant-dashboard-actions.js"></script>
+	<script type="text/javascript" src="/assets/js/jasny-bootstrap.min.js"></script>
 {% endblock %}

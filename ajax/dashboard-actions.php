@@ -4,8 +4,8 @@
 	$db = new medoo();
 	
 	$intent = $_POST['intent'];
-	
 
+	
 	switch ($intent) {
 		case 'delete':
 
@@ -45,7 +45,6 @@
 			$amount			= $_POST['dataform']['amount'];
 			$vegetarian		= $_POST['dataform']['vegetarian'];
 			$availability 	= $_POST['dataform']['available'];
-
 
 			$result = $db->insert("food",
 				[
@@ -135,6 +134,18 @@
 			$result = array( $orderInfo, $amountOrder );
 			break;
 		
+		case 'update-restaurant':
+			$restaurantid = $_POST['restaurantID'];	
+			$data = array(
+					'name' 		=> $_POST['restaurantName'] ,
+					'email'		=> $_POST['restaurantEmail'] ,
+					'address' 	=> $_POST['restaurantAddress'] ,
+					'phone'		=> $_POST['restaurantPhone']
+				);
+			$query = $db->update( "restaurant" , $data , ["id" => $restaurantid] );
+			$result = $data;
+			break;
+
 		default:
 			# code...
 			break;

@@ -40,7 +40,7 @@
 		public function get($request = false)
 		{
 			$this->restaurant = $request;
-
+			
 			//check if already has an order
 			if (!isset($_SESSION['orderid'])) {
 				$session_order_id = $_SESSION['orderid'] = date_timestamp_get(date_create());
